@@ -221,7 +221,7 @@ object UserInterestProfile {
     }
     sqlContext.sql(s"alter table app.kg_user_interest_tag drop  partition(dt='${date}')")
     sqlContext.sql(s"alter table app.kg_user_interest_tag drop  partition(dt='${deldate}')")
-    final_df.repartition(1000).toDF().write.format("orc").save("hdfs://ns1017/user/jd_ad/ads_bgn/ad_bgn.db/kg_user_interest_tag/dt=%s".format(date))
+    final_df.repartition(1000).toDF().write.format("orc").save("hdfs://ns1017/user/ads_bgn/kg_user_interest_tag/dt=%s".format(date))
     sqlContext.sql("msck repair table app.kg_user_interest_tag")
     //sqlContext.sql(s"use ad_bgn")
     //df.write.saveAsTable(s"user_interest_short_table_"+date)*/
